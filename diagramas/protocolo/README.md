@@ -1,4 +1,4 @@
-## 📘 Teoría de Operación: Protocolo I2C y Memoria EEPROM
+##  Teoría de Operación: Protocolo I2C y Memoria EEPROM
 
 A continuación se detallan los fundamentos teóricos del bus I2C y las características de la memoria externa, información clave para el desarrollo de la máquina de estados de nuestro periférico Master.
 
