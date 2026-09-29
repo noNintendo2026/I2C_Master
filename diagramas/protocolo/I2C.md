@@ -10,7 +10,6 @@ El Master es el encargado de iniciar la comunicación, generar el reloj y selecc
 
 <img width="465" height="185" alt="Figura 24-2" src="https://github.com/user-attachments/assets/4f20303b-a71c-4318-ace6-2ecc021f2cd1" />
 
-**Qué se debe explicar durante la exposición:**
 
 > “Esta figura muestra la estructura física básica de nuestro sistema I2C. Tenemos un Master conectado a una memoria EEPROM, que actúa como Slave. La comunicación se realiza mediante las líneas SCL y SDA. SCL proporciona el reloj y SDA transporta los datos. Las resistencias pull-up son necesarias porque las líneas del bus se manejan liberando la línea o llevándola a nivel bajo.”
 
@@ -31,8 +30,6 @@ Un **ACK** indica que el byte fue recibido correctamente y que la comunicación 
 Finalmente, la condición de **STOP** se genera cuando `SDA` cambia de bajo a alto mientras `SCL` se encuentra en alto. Esta condición indica que la comunicación ha finalizado y que el bus vuelve al estado de reposo.
 
 <img width="575" height="209" alt="Figura 24-3" src="https://github.com/user-attachments/assets/e01ef5dc-c76e-4641-a056-ec591213b34f" />
-
-**Qué se debe explicar durante la exposición:**
 
 > “Esta figura representa los estados principales del protocolo I2C. Primero tenemos START, que inicia la comunicación. Después se transmiten los bits de información sincronizados con SCL. Por cada byte existen ocho bits de datos y un noveno ciclo utilizado para ACK o NACK. Finalmente, STOP indica que la comunicación terminó.”
 
@@ -60,7 +57,6 @@ Esta figura es especialmente importante para el proyecto porque permite relacion
 
 <img width="605" height="424" alt="Figura 24-15" src="https://github.com/user-attachments/assets/b5ab95b2-3da7-43a7-9ffe-d2619e6033bc" />
 
-**Qué se debe explicar durante la exposición:**
 
 > “Esta figura muestra cómo el Master controla una comunicación completa con la EEPROM. Primero genera START, después transmite la información necesaria para seleccionar la memoria y su dirección interna. Para una lectura, genera un Repeated START, cambia la operación a lectura y recibe el dato. Finalmente genera ACK o NACK según corresponda y termina con STOP. Esta secuencia nos sirve como referencia para diseñar los estados de nuestro I2C Master en la FPGA.”
 
@@ -87,8 +83,6 @@ La secuencia completa puede resumirse como:
 `START → ADDRESS + W → ACK → MEMORY ADDRESS → ACK → REPEATED START → ADDRESS + R → DATA → NACK → STOP`
 
 <img width="880" height="217" alt="Figura 24-4" src="https://github.com/user-attachments/assets/0801a9b0-a528-404d-9d3d-b046b4429fbb" />
-
-**Qué se debe explicar durante la exposición:**
 
 > “Esta figura muestra cómo se realiza una lectura aleatoria de la EEPROM. Primero usamos una operación de escritura para indicarle a la memoria qué posición queremos leer. Después hacemos un Repeated START y volvemos a enviar la dirección, pero ahora con el bit de lectura. La EEPROM entrega el dato por SDA. Cuando ya recibimos el dato que necesitamos, el Master envía un NACK y finalmente genera STOP.”
 
