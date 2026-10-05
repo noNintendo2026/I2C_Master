@@ -109,8 +109,8 @@ Para implementar el protocolo I2C en la FPGA, la comunicación se organiza media
 | `RESTART`           | Reiniciar una comunicación sin liberar el bus | `SCL = 1`                    | `1 → 0`                                                        | Comienza una nueva fase                             |
 | `STOP`              | Finalizar la comunicación                     | Primero `SCL → 1`            | `0 → 1` mientras `SCL = 1`                                     | Bus vuelve a IDLE                                   |
 | `ACK_POLLING`       | Comprobar si la EEPROM terminó de escribir    | Genera los pulsos necesarios | Repite START + dirección + W                                   | ACK = EEPROM disponible; NACK = continuar esperando |
+<img width="1441" height="1007" alt="imagen" src="https://github.com/user-attachments/assets/8e2b80b7-5599-4ca9-aa36-6fef49ea2f1f" />
 
-<img width="605" height="424" alt="Figura 24-15" src="https://github.com/user-attachments/assets/b5ab95b2-3da7-43a7-9ffe-d2619e6033bc" />
 
 **Figura 24-15. Secuencia de operación de un Master I2C durante la lectura de una memoria EEPROM.**
 
